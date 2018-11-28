@@ -48,7 +48,7 @@ namespace GuessTheNumber
 
             /* 
              * Showing a 'Congratulations' message to the 
-             * user if the number is guessed
+             * user if the number is guessed correctly
              */
             if (randomNumber == intUserNumber)
             {
