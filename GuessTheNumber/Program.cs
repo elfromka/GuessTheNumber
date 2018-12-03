@@ -17,44 +17,36 @@ namespace GuessTheNumber
             Random rnd = new Random();
             int randomNumber = rnd.Next(1, 100);
 
-            // Asking for a number from the user
-            Console.Write("Please, enter a number between 1 & 100: ");
+            // Checking if the number is guessed by the user
+            bool isItGuessed = false;
 
-            // Read it, and convert it from string to int
-            string stringUserNumber = Console.ReadLine();
-            int intUserNumber = int.Parse(stringUserNumber);
+            // Welcoming the user
+            do {
+                // Asking for a number from the user
+                Console.Write("Please, enter a number between 1 & 100: ");
 
-            // Keep asking until the user guessed the random number 
-            while (randomNumber != intUserNumber)
-            {
+                // Read it, and convert it from string to int
+                string stringUserNumber = Console.ReadLine();
+                int intUserNumber = int.Parse(stringUserNumber);
+
+                // Little hints/helps
                 if (randomNumber > intUserNumber)
                 {
-                    // Warn the user that the random number is bigger
                     Console.WriteLine("\r\nWrong, it's a BIGGER number");
                 }
-                else
+                else if(randomNumber < intUserNumber)
                 {
-                    // Warn the user that the random number is smaller
                     Console.WriteLine("\r\nWrong, it's a SMALLER number");
+                } 
+                else if(randomNumber == intUserNumber)
+                {
+                    // The number is the same as the input number from the user
+                    isItGuessed = true;
+                    Console.WriteLine("\r\nCongratulations! You guessed the number! :)");
+                    Console.WriteLine("\r\nPress any key to Exit...)");
+                    Console.ReadKey();
                 }
-
-                // Asking again for a number from the user
-                Console.Write("Please try again and enter another number: ");
-
-                // Reading/converting it again from string to int
-                stringUserNumber = Console.ReadLine();
-                intUserNumber = int.Parse(stringUserNumber);
-            }
-
-            /* 
-             * Showing a 'Congratulations' message to the 
-             * user if the number is guessed correctly
-             */
-            if (randomNumber == intUserNumber)
-            {
-                Console.WriteLine("\r\nCongratulations! You guessed the number! :)");
-                Console.ReadKey();
-            }
+            } while(isItGuessed == false);
         }
     }
 }
